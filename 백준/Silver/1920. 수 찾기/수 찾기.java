@@ -1,6 +1,10 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.Arrays;
-import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class Main {
 	public boolean search(int[] arr, int target) {
@@ -34,24 +38,33 @@ public class Main {
 	
 	public static void main(String[] args) throws IOException {
 		Main T = new Main();
-		Scanner sc = new Scanner(System.in);
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringTokenizer st;
 		
-		int N = sc.nextInt();
+		int N = Integer.parseInt(br.readLine());
+		st = new StringTokenizer(br.readLine());
+		
 		int[] A = new int[N];
 		for(int i = 0; i < N; i++) {
-			A[i] = sc.nextInt();
+			A[i] = Integer.parseInt(st.nextToken());
 		}
 		
-		int M = sc.nextInt();
+		int M = Integer.parseInt(br.readLine());
+		st = new StringTokenizer(br.readLine());
+		
 		int[] arr = new int[M];		
 		for(int i = 0; i < M; i++) {
-			arr[i] = sc.nextInt();
+			arr[i] = Integer.parseInt(st.nextToken());
 		}
 		
 		for(int x : T.solution(N, M, A, arr)) {
-			System.out.println(x);			
+			bw.write(x + "\n");			
 		}
 		
-		sc.close();
+		bw.flush();
+		bw.close();
+		br.close();
+
 	}
 }
